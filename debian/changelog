@@ -1,15 +1,111 @@
-iptables (1.4.14-3.1) wheezy; urgency=low
+iptables (1.4.21-2) unstable; urgency=medium
 
-  [ Jonathan Nieder ]
-  * Non-maintainer upload.
-  * Add Breaks against iproute and xtables-addons-common versions
-    that relied on libxtables4. Closes: #691180
+  * correct _dhopts var to enable autoreconf. Closes: #744968
+  * use arch:linux-any. Closes: #745171
+  * bump standards version, 3.9.4 to 3.9.5
+  * drop extra iptables-apply, fix iptables.install
 
-  [ Julien Cristau ]
-  * Have iptables provide libxtables7, and tell dh_makeshlibs to include that
-    in generated dependencies.
+ -- Laurence J. Lane <ljlane@debian.org>  Mon, 19 May 2014 20:49:01 -0400
 
- -- Julien Cristau <jcristau@debian.org>  Fri, 01 Mar 2013 14:50:39 +0100
+iptables (1.4.21-1) unstable; urgency=low
+
+  * New upstream release
+    + Corrected spurious load_extension errors. Closes: #699537
+    + Corrected man page icmp defaults. Closes: #644819
+    + Corrected state man page. Closes: #654983
+    + Corrected address in hashlimit man page. Closes: #698393
+    + Removed syslogd man page references. Closes: #567564
+    + Added string match man page hex examples. Closes: #699904
+    + Merged 0201-iptables-xml_man_section.patch
+    + Merged 0303-extension_cppflags.patch
+    + Merged 0401-state-match-display.patch 
+  * Updated iptables-apply to v1.1. Closes: #580941
+  * Use mktemp instead of tmpfile for iptables-apply. Closes: #668582
+  * Add iptables-apply info to man pages. Closes: #660748
+  * Updated debian/copyright 
+  * Updated debian/control Description
+  * Removed debian/builddir hack and other debian/rules cruft
+  * Removed debug info from README.Debian
+
+ -- Laurence J. Lane <ljlane@debian.org>  Sun, 01 Dec 2013 19:48:23 -0500
+
+iptables (1.4.20-2) unstable; urgency=low
+
+  * Fixed man page installation so that @PACKAGE_VERSION@ is expanded.
+    Reported by Christoph Biedl. Thanks.
+    Closes: #712403
+  * Fixed iptables-xml manpage mix-up
+  * Restored missing connlabel extension
+
+ -- Laurence J. Lane <ljlane@debian.org>  Sat, 17 Aug 2013 09:16:04 -0400
+
+iptables (1.4.20-1) unstable; urgency=low
+
+  * New upstream release
+  * added 0401-state-match-display.patch for the missing state match
+    display reported by Eugene Berdnikov and fixed by Phil Oester. Thanks.
+    Closes: #718810 
+  * upstream fix addresses concurrent invocation issues reported by
+    Lamont Jones. Fixed upstream by Phil Oester and Pablo Neira Ayuso.
+    Closes: #710997
+
+ -- Laurence J. Lane <ljlane@debian.org>  Thu, 08 Aug 2013 10:39:54 -0400
+
+iptables (1.4.19.1-1) unstable; urgency=low
+
+  * New upstream release
+  * Bumped Standard-Version to 3.9.4
+
+ -- Laurence J. Lane <ljlane@debian.org>  Sat, 20 Jul 2013 17:30:47 -0400
+
+iptables (1.4.18-1.1) unstable; urgency=low
+
+  [ gregor herrmann ]
+  * Fix "libipq.h includes non-existing linux/netfilter_ipv4/ip_queue.h":
+    ship /usr/include/linux/netfilter_ipv4/ip_queue.h in iptables-dev;
+    add Breaks on linux-libc-dev << 3.5
+    (Closes: #707535)
+
+  [ Dominic Hargreaves ]
+  * Non-maintainer upload
+
+ -- Dominic Hargreaves <dom@earth.li>  Sat, 13 Jul 2013 16:09:01 +0100
+
+iptables (1.4.18-1) unstable; urgency=low
+
+  * New upstream release
+  * New package for soname bump: libxtables10
+
+ -- Laurence J. Lane <ljlane@debian.org>  Sun, 24 Mar 2013 17:15:41 -0400
+
+iptables (1.4.16.3-4) unstable; urgency=low
+
+  * Added missing Breaks and Replaces for libxtables9. Thanks all.
+    Closes: #692171
+
+ -- Laurence J. Lane <ljlane@debian.org>  Fri, 02 Nov 2012 22:52:47 -0400
+
+iptables (1.4.16.3-3) unstable; urgency=low
+
+  * Added versioned libxtables dependency 
+
+ -- Laurence J. Lane <ljlane@debian.org>  Sun, 28 Oct 2012 09:40:00 -0400
+
+iptables (1.4.16.3-2) unstable; urgency=low
+
+  * Moved libxtables into a separate package. Fixes problem with connman
+    reported by Jonathan Nieder. Thanks. Closes: #691546
+  * Added nfnl_osf and xtables-mutil man page stubs.
+
+ -- Laurence J. Lane <ljlane@debian.org>  Sat, 27 Oct 2012 09:36:56 -0400
+
+iptables (1.4.16.3-1) unstable; urgency=low
+
+  * New upstream release
+  * Moved nfnl_osf to /usr/sbin. Fixes lib dependency problem reported
+    by Matteo Cortese. Thanks. Closes: #667688
+
+ -- Laurence J. Lane <ljlane@debian.org>  Fri, 19 Oct 2012 12:07:42 -0400
 
 iptables (1.4.14-3) unstable; urgency=low
 
@@ -135,7 +231,7 @@ iptables (1.4.9-1) unstable; urgency=low
 iptables (1.4.8-3) unstable; urgency=low
 
   * added missing iptables-xml symlink and man page. Reported by Carl
-    Fürstenberg and others. Closes: #589059
+    FÃ¼rstenberg and others. Closes: #589059
 
  -- Laurence J. Lane <ljlane@debian.org>  Fri, 16 Jul 2010 16:56:20 -0400
 
@@ -302,7 +398,7 @@ iptables (1.4.2-1) unstable; urgency=low
     Feldgendler. Thanks. closes: #509386  
   * -multi bins were included in buildd generated packages. Reported
     by Alexey Feldgendler. closes: 509385
-  * added missing iptables.xslt. Reported by Carl FÃ¼rstenberg. Thanks.
+  * added missing iptables.xslt. Reported by Carl FÃÂ¼rstenberg. Thanks.
     closes: #501615. 
 
  -- Laurence J. Lane <ljlane@debian.org>  Fri, 02 Jan 2009 17:19:08 -0500
@@ -423,7 +519,7 @@ iptables (1.3.6.0debian1-1) unstable; urgency=low
     + adds support port range match to libip6t_multiport
     + adds endian annotation types to fix compilation for
       kernels > 2.6.18
-  * ipv6 updates in SVN by RÃÂ©mi Denis-Courmont fixes the ip6tables port
+  * ipv6 updates in SVN by RÃÂÃÂ©mi Denis-Courmont fixes the ip6tables port
     range bug reported by Alexander Dreweke. Thanks. closes: #329775
   * debian/control: added info about missing kernel extensions
   * bumped standards version to 3.7.2, no changes
@@ -468,7 +564,7 @@ iptables (1.3.5.0debian1-1) unstable; urgency=low
     mport, nth, osf, pool, psd, quota, random, time
   * replaced debian/copyright GPL paste with stubs
   * updated debian/copyright source URLs
-  * Thanks for the invaluable help RÃÂ©mi Denis-Courmont.
+  * Thanks for the invaluable help RÃÂÃÂ©mi Denis-Courmont.
 
  -- Laurence J. Lane <ljlane@debian.org>  Sun, 20 Aug 2006 21:29:33 -0400
 
