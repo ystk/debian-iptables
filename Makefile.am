@@ -10,9 +10,7 @@ endif
 if ENABLE_LIBIPQ
 SUBDIRS         += libipq
 endif
-if HAVE_LIBNFNETLINK
 SUBDIRS         += utils
-endif
 # Depends on libxtables:
 SUBDIRS         += extensions
 # Depends on extensions/libext.a:
@@ -27,4 +25,4 @@ tarball:
 	rm -Rf /tmp/${PACKAGE_TARNAME}-${PACKAGE_VERSION};
 
 config.status: extensions/GNUmakefile.in \
-	include/xtables.h.in include/iptables/internal.h.in
+	include/xtables-version.h.in include/iptables/internal.h.in

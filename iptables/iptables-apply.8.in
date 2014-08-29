@@ -2,7 +2,7 @@
 .\"    Author: Martin F. Krafft
 .\"      Date: Jun 04, 2006
 .\"
-.TH iptables\-apply 8 2006-06-04
+.TH IPTABLES\-APPLY 8 "" "@PACKAGE_STRING@" "@PACKAGE_STRING@"
 .\" disable hyphenation
 .nh
 .SH NAME
@@ -18,7 +18,7 @@ connection, the user will not be able to answer affirmatively. In this
 case, the script rolls back to the previous ruleset after the timeout
 expired. The timeout can be set with \fB\-t\fP.
 .PP
-When called as ip6tables\-apply, the script will use
+When called as \fBip6tables\-apply\fP, the script will use
 ip6tables\-save/\-restore instead.
 .SH OPTIONS
 .TP
